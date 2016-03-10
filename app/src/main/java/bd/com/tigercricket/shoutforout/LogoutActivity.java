@@ -11,14 +11,11 @@ import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Message;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,7 +30,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.facebook.login.LoginManager;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,20 +42,17 @@ import java.util.Map;
 
 import bd.com.tigercricket.callbacks.MatchLoadedListener;
 import bd.com.tigercricket.extras.Constants;
-import bd.com.tigercricket.extras.MyApplication;
-import bd.com.tigercricket.json.CustomRequest;
 import bd.com.tigercricket.logging.L;
 import bd.com.tigercricket.network.VolleySingleton;
 import bd.com.tigercricket.pojo.Match;
 import bd.com.tigercricket.pojo.User;
 import bd.com.tigercricket.task.TaskLoadMatch;
 
-import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_TEAM_1;
-import static bd.com.tigercricket.extras.UrlEndpoints.URL_SHOUT;
 import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_EMAIL;
+import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_MATCH_ID;
 import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_NAME;
 import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_SHOUT;
-import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_MATCH_ID;
+import static bd.com.tigercricket.extras.UrlEndpoints.URL_SHOUT;
 
 
 public class LogoutActivity extends Activity implements MatchLoadedListener {
@@ -213,6 +206,11 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
 
     @Override
     public void onMatchLoaded(ArrayList<Match> matchArrayList) {
+        if(matchArrayList.size()==0)
+        {
+            showChangeLangDialog("No current Match !", "Please try later");
+            return;
+        }
         match = new Match();
         match = matchArrayList.get(0);
         tvTeam1.setText(match.getTeam_1());
