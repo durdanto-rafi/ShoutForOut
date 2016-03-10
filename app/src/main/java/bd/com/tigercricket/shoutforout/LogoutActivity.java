@@ -285,15 +285,6 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         }
     }
 
-    public void showResult() {
-
-        final Dialog dialog = new Dialog(this, R.style.CustomAlertDialog);
-        dialog.setContentView(R.layout.display_result);
-        dialog.setCancelable(true);
-        dialog.show();
-
-    }
-
     public void showChangeLangDialog(String shout, String message) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
