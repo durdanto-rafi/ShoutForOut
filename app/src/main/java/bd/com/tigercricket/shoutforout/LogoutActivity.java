@@ -290,9 +290,6 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.display_result, null);
         dialogBuilder.setView(dialogView);
-
-        //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
-
         dialogBuilder.setTitle(shout);
         dialogBuilder.setMessage(message);
         dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
