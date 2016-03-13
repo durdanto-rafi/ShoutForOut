@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <dimen name="flag_holder_small">14sp</dimen>
+   <dimen name="flag_holder_big">26sp</dimen>
+   <dimen name="inner_bottom">26sp</dimen>
+</resources>

@@ -1,145 +1,358 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        android:background="@mipmap/inner_top"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileImage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="#494949"
-        android:padding="16dp"
-        android:text="Logout from Facebook"
-        android:textColor="#fff"
-        android:visibility="invisible"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".7"
+        android:background="@mipmap/inner_main_bg"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fbtnRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/presence_audio_busy"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fbLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_delete"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/tvSpeechInput"
-        android:layout_below="@+id/btnLogout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center" />
+        </LinearLayout>
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:id="@+id/ivTeam1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:id="@+id/ivTeam2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="15dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/tvTeam1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ivTeam1"
-        android:layout_alignRight="@+id/ivTeam1"
-        android:layout_alignEnd="@+id/ivTeam1"
-        android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".98"
+                android:orientation="vertical"
+                android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/tvTeam2"
-        android:layout_alignRight="@+id/ivTeam2"
-        android:layout_alignEnd="@+id/ivTeam2"
-        android:layout_alignTop="@+id/tvTeam1"
-        android:layout_alignLeft="@+id/ivTeam2"
-        android:layout_alignStart="@+id/ivTeam2"
-        android:gravity="center"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".45"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="VS"
-        android:id="@+id/tvVS"
-        android:gravity="center"
-        android:layout_above="@+id/tvTeam1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="41dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvSituation"
-        android:layout_above="@+id/profileImage"
-        android:layout_centerHorizontal="true" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".65"
+                        android:orientation="vertical"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvTotalShout"
-        android:layout_below="@+id/tvSpeechInput"
-        android:layout_alignLeft="@+id/fbLogout"
-        android:layout_alignStart="@+id/fbLogout" />
+                        android:weightSum="4">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvTotalOut"
-        android:layout_below="@+id/tvTotalShout"
-        android:layout_alignLeft="@+id/tvTotalShout"
-        android:layout_alignStart="@+id/tvTotalShout" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvTotalNotOut"
-        android:layout_below="@+id/tvTotalOut"
-        android:layout_alignLeft="@+id/ivTeam1"
-        android:layout_alignStart="@+id/ivTeam1" />
+                        </LinearLayout>
 
-</RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@mipmap/flag_holder_big"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="BOWLING"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/flag_holder_big"
+                            android:weightSum="1">
+
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivTeam1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="-50dp"
+                        android:layout_weight=".35"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/flag_big_2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".45"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".65"
+                        android:orientation="vertical"
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@mipmap/flag_holder_big"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="BATTING"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/flag_holder_big"
+                            android:weightSum="1">
+
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivTeam2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="-50dp"
+                        android:layout_weight=".35"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/flag_big_1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".03"
+                android:orientation="vertical"
+                android:weightSum="1"></LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".6"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".45"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".65"
+                        android:orientation="vertical"
+
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvTotalOut"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@mipmap/flag_holder_big"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="Total Outs:"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/flag_holder_small"
+                            android:weightSum="1">
+
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivTeamSmall1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="-50dp"
+                        android:layout_weight=".35"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/flag_big_2" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".45"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".65"
+                        android:orientation="vertical"
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvTotalNotOut"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:background="@mipmap/flag_holder_big"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:text="Total Not Outs:"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/flag_holder_small"
+                            android:weightSum="1">
+
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivTeamSmall2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="-50dp"
+                        android:layout_weight=".35"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/flag_big_1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".40"
+                android:orientation="vertical"
+                android:weightSum="1"></LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:background="@mipmap/inner_bottom"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/flag_holder_big"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:text="It is out./Its not out"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/inner_bottom"
+            android:weightSum="1">
+
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

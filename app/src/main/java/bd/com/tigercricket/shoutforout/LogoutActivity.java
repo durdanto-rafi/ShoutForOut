@@ -57,11 +57,10 @@ import static bd.com.tigercricket.extras.UrlEndpoints.URL_SHOUT;
 
 public class LogoutActivity extends Activity implements MatchLoadedListener {
 
-    private TextView btnLogout, tvTeam2, tvTeam1, tvSituation, tvTotalNotOut, tvTotalOut, tvTotalShout;
+    private TextView btnLogout,  tvTotalNotOut, tvTotalOut;
     private User user;
-    private ImageView profileImage, ivTeam1, ivTeam2;
+    private ImageView  ivTeam1, ivTeam2;
     Bitmap bitmap;
-    private TextView tvSpeechInput;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
     private static final int REQUEST_CODE = 1234;
@@ -79,15 +78,15 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
         user = PrefUtils.getCurrentUser(LogoutActivity.this);
-        profileImage = (ImageView) findViewById(R.id.profileImage);
+        //profileImage = (ImageView) findViewById(R.id.profileImage);
         ivTeam1 = (ImageView) findViewById(R.id.ivTeam1);
         ivTeam2 = (ImageView) findViewById(R.id.ivTeam2);
-        tvSpeechInput = (TextView) findViewById(R.id.tvSpeechInput);
-        tvTeam2 = (TextView) findViewById(R.id.tvTeam2);
-        tvTeam1 = (TextView) findViewById(R.id.tvTeam1);
-        tvSituation = (TextView) findViewById(R.id.tvSituation);
+        //tvSpeechInput = (TextView) findViewById(R.id.tvSpeechInput);
+        //tvTeam2 = (TextView) findViewById(R.id.tvTeam2);
+        //tvTeam1 = (TextView) findViewById(R.id.tvTeam1);
+        //tvSituation = (TextView) findViewById(R.id.tvSituation);
 
-        tvTotalShout = (TextView) findViewById(R.id.tvTotalShout);
+        //tvTotalShout = (TextView) findViewById(R.id.tvTotalShout);
         tvTotalOut = (TextView) findViewById(R.id.tvTotalOut);
         tvTotalNotOut = (TextView) findViewById(R.id.tvTotalNotOut);
 
@@ -118,13 +117,13 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
                 @Override
                 protected void onPostExecute(Void aVoid) {
                     super.onPostExecute(aVoid);
-                    profileImage.setImageBitmap(bitmap);
+                    //profileImage.setImageBitmap(bitmap);
                 }
             }.execute();
         }
 
 
-        btnLogout = (TextView) findViewById(R.id.btnLogout);
+        /*btnLogout = (TextView) findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,14 +134,14 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
 
-        FloatingActionButton fbtnRecord = (FloatingActionButton) findViewById(R.id.fbtnRecord);
+        /*FloatingActionButton fbtnRecord = (FloatingActionButton) findViewById(R.id.fbtnRecord);
         fbtnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                *//*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*//*
                 if (isConnected()) {
                     Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                     intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -165,7 +164,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
                 startActivity(i);
                 finish();
             }
-        });
+        });*/
         new TaskLoadMatch(this).execute();
 
     }
@@ -188,12 +187,12 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
 
             for (String text : matches_text) {
                 if (text.matches("(?i).*no.*")) {
-                    tvSpeechInput.setText("Not Out");
+                    //tvSpeechInput.setText("Not Out");
                     shout = "2";
                     shoutToServer();
                     return;
                 } else if (text.matches("(?i).*out.*")) {
-                    tvSpeechInput.setText("Out");
+                    //tvSpeechInput.setText("Out");
                     shout = "1";
                     shoutToServer();
                     return;
@@ -213,11 +212,11 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         }
         match = new Match();
         match = matchArrayList.get(0);
-        tvTeam1.setText(match.getTeam_1());
-        tvTeam2.setText(match.getTeam_2());
-        tvSituation.setText(match.getSituation());
+        //tvTeam1.setText(match.getTeam_1());
+        //tvTeam2.setText(match.getTeam_2());
+        //tvSituation.setText(match.getSituation());
 
-        tvTotalShout.setText("Total Shout : " + match.getShouts());
+        //tvTotalShout.setText("Total Shout : " + match.getShouts());
         tvTotalOut.setText("Total Out : " + match.getOuts());
         tvTotalNotOut.setText("Total Not Out : " + match.getNot_outs());
 
