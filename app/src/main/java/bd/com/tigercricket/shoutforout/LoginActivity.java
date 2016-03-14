@@ -2,8 +2,12 @@ package bd.com.tigercricket.shoutforout;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -74,6 +78,32 @@ public class LoginActivity extends Activity {
 
             }
         });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (isConnected()) {
+                    progressDialog = new ProgressDialog(LoginActivity.this);
+                    progressDialog.setMessage("Loading...");
+                    progressDialog.show();
+
+                    //loginButton.performClick();
+
+                    loginButton.setPressed(true);
+
+                    loginButton.invalidate();
+
+                    loginButton.registerCallback(callbackManager, mCallBack);
+
+                    loginButton.setPressed(false);
+
+                    loginButton.invalidate();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Connect to Internet", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -135,4 +165,13 @@ public class LoginActivity extends Activity {
         }
     };
 
+    public boolean isConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo net = cm.getActiveNetworkInfo();
+        if (net != null && net.isAvailable() && net.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

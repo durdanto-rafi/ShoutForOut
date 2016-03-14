@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2"
+        android:layout_weight=".18"
         android:background="@mipmap/inner_top"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".7"
+        android:layout_weight=".75"
         android:background="@mipmap/inner_main_bg"
         android:orientation="vertical"
         android:weightSum="1">
@@ -73,21 +73,50 @@
 
                         </LinearLayout>
 
-
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="2"
                             android:background="@mipmap/flag_holder_big"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:text="BOWLING"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/flag_holder_big"
+                            android:orientation="horizontal"
                             android:weightSum="1">
 
 
-                        </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".4"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text=""
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_big">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text="BOWLING"
+                                android:layout_margin="5dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_big">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text="(Shout Out)"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_small">
+
+                            </TextView>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -113,6 +142,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_weight=".02"
+                    android:orientation="horizontal"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight=".45"
                     android:orientation="horizontal"
                     android:weightSum="1">
@@ -134,20 +169,50 @@
 
                         </LinearLayout>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="2"
                             android:background="@mipmap/flag_holder_big"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:text="BATTING"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/flag_holder_big"
+                            android:orientation="horizontal"
                             android:weightSum="1">
 
 
-                        </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".4"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text=""
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_big">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text="BATTING"
+                                android:layout_margin="5dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_big">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:text="(Shout Boo)"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/flag_holder_small">
+
+                            </TextView>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -257,6 +322,11 @@
                         android:src="@mipmap/flag_big_2" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".02"
+                    android:orientation="horizontal"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -334,10 +404,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".1"
+        android:layout_weight=".07"
         android:background="@mipmap/inner_bottom"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="match_parent"
