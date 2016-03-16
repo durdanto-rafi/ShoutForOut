@@ -24,7 +24,7 @@ public class MyApplication extends Application {
         super.onCreate();
         sInstance = this;
         FacebookSdk.sdkInitialize(getApplicationContext());
-        try {
+        /*try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
@@ -35,7 +35,7 @@ public class MyApplication extends Application {
 
         } catch (NoSuchAlgorithmException e) {
 
-        }
+        }*/
     }
 
     public static Context getAppContext() {

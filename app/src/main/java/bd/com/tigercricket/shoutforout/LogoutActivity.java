@@ -59,7 +59,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
 
     private TextView btnLogout,  tvTotalNotOut, tvTotalOut;
     private User user;
-    private ImageView  ivTeam1, ivTeam2;
+    private ImageView  ivTeam1, ivTeam2, ivTeamSmall1, ivTeamSmall2;
     Bitmap bitmap;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
@@ -81,6 +81,9 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         //profileImage = (ImageView) findViewById(R.id.profileImage);
         ivTeam1 = (ImageView) findViewById(R.id.ivTeam1);
         ivTeam2 = (ImageView) findViewById(R.id.ivTeam2);
+
+        ivTeamSmall1 = (ImageView) findViewById(R.id.ivTeamSmall1);
+        ivTeamSmall2 = (ImageView) findViewById(R.id.ivTeamSmall2);
         //tvSpeechInput = (TextView) findViewById(R.id.tvSpeechInput);
         //tvTeam2 = (TextView) findViewById(R.id.tvTeam2);
         //tvTeam1 = (TextView) findViewById(R.id.tvTeam1);
@@ -196,7 +199,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
             matches_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
             for (String text : matches_text) {
-                if (text.matches("(?i).*no.*")) {
+                if (text.matches("(?i).*bo.*")) {
                     //tvSpeechInput.setText("Not Out");
                     shout = "2";
                     shoutToServer();
@@ -232,6 +235,9 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
 
         loadImages(match.getTeam_1_flag(), ivTeam1);
         loadImages(match.getTeam_2_flag(), ivTeam2);
+
+        loadImages(match.getTeam_1_flag(), ivTeamSmall1);
+        loadImages(match.getTeam_2_flag(), ivTeamSmall2);
     }
 
     private void loadImages(String urlThumbnail, final ImageView ivImage) {
