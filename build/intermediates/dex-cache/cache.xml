@@ -2,74 +2,74 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\RAFI\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\library-1.0.19-33fe5f46c5c00a5495bd9e53a2d1a8d7a7d82ba1.jar" />
-    </item>
-    <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-35e795a8d44b556f5500c7dab30b5d4f102f0a17.jar" />
-    </item>
-    <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-abb97a1ba72451064952a43d9a90ee54f6f02235.jar" />
-    </item>
-    <item
-        jar="C:\Users\RAFI\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-12cab309359c4db85ed5971aa5b3bbf918f674e6.jar" />
-    </item>
-    <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-90f06a52c8ece41facbf3c7df13545fdfa1e4f36.jar" />
-    </item>
-    <item
-        jar="C:\Users\RAFI\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-17180ff6f1fb2bbd470ce722752ca838d2e4b8f5.jar" />
-    </item>
-    <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-ef4422902ba06e5c29eeca34b785130c64ed3e5a.jar" />
-    </item>
-    <item
-        jar="C:\Users\RAFI\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\gson-2.3.1-172cea7140fcacd0a5cc4caf151108d5523e79ac.jar" />
-    </item>
-    <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-3b03be986899f0be666f79ce6dfe972ba9a3e6e5.jar" />
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-dbc9595cce69994934acd5f217a5a9cd26989877.jar" />
     </item>
     <item
-        jar="E:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="E:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-b131fc7bc3dacb42212139937fe0ad885cfafce0.jar" />
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-ee5bfc6848cec0c46b43e93be5ecced56baae30a.jar" />
+    </item>
+    <item
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-8f2de27fc34f7d15a0d091fd4119a2a9f2b46bf8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rita\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\library-1.0.19-8f870b5d91b9944dcd80831f328cb916a81fc0f5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rita\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\gson-2.3.1-e42a961d4c8baa78f864e297fc8cf760c9fe1f8d.jar" />
+    </item>
+    <item
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-dcb119b0d49771c7144914db820f10366316cbb8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Rita\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-b425c1eaa238781ef6e42f061e42ab0172435afe.jar" />
+    </item>
+    <item
+        jar="F:\Project\adt-bundle-windows-x86_64-20140702\adt-bundle-windows-x86_64-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-73340d477692c82a6526b0589fc2f7f7213ed3a5.jar" />
+    </item>
+    <item
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\classes-f032dd98bb41df62659e1f122634027392914b16.jar" />
+    </item>
+    <item
+        jar="F:\Project\ShoutForOut\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="F:\Project\ShoutForOut\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-9cfdd5f5315f167e6f7d92f793ddfbbc78c1a021.jar" />
     </item>
 
 </items>

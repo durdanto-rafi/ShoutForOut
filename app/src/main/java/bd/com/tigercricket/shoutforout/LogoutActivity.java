@@ -12,14 +12,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
-import android.support.design.widget.FloatingActionButton;
+import android.speech.SpeechRecognizer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,7 +28,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.facebook.login.LoginManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,11 +54,11 @@ import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_SHOUT;
 import static bd.com.tigercricket.extras.UrlEndpoints.URL_SHOUT;
 
 
-public class LogoutActivity extends Activity implements MatchLoadedListener {
+public class LogoutActivity extends Activity implements MatchLoadedListener, RecognitionListener {
 
-    private TextView btnLogout,  tvTotalNotOut, tvTotalOut;
+    private TextView btnLogout, tvTotalNotOut, tvTotalOut;
     private User user;
-    private ImageView  ivTeam1, ivTeam2, ivTeamSmall1, ivTeamSmall2;
+    private ImageView ivTeam1, ivTeam2, ivTeamSmall1, ivTeamSmall2;
     Bitmap bitmap;
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
@@ -72,6 +71,12 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
     String shout;
     Match match;
     String message;
+
+
+    private TextView returnedText;
+    private SpeechRecognizer speech = null;
+    private Intent recognizerIntent;
+    private String LOG_TAG = "VoiceRecognitionActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +129,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
                 }
             }.execute();
 
-            if (isConnected()) {
+            /*if (isConnected()) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 20000000);
@@ -132,8 +137,18 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
                 //tvSpeechInput.setText("");
             } else {
                 Toast.makeText(getApplicationContext(), "Plese Connect to Internet", Toast.LENGTH_LONG).show();
-            }
+            }*/
         }
+
+        speech = SpeechRecognizer.createSpeechRecognizer(this);
+        speech.setRecognitionListener(this);
+        recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en");
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, this.getPackageName());
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
+
+        speech.startListening(recognizerIntent);
 
 
         /*btnLogout = (TextView) findViewById(R.id.btnLogout);
@@ -218,8 +233,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
 
     @Override
     public void onMatchLoaded(ArrayList<Match> matchArrayList) {
-        if(matchArrayList.size()==0)
-        {
+        if (matchArrayList.size() == 0) {
             showChangeLangDialog("No current Match !", "Please try later");
             return;
         }
@@ -321,4 +335,129 @@ public class LogoutActivity extends Activity implements MatchLoadedListener {
         b.show();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (speech != null) {
+            speech.destroy();
+            //Log.i(LOG_TAG, "destroy");
+        }
+
+    }
+
+    @Override
+    public void onBeginningOfSpeech() {
+        // Log.i(LOG_TAG, "onBeginningOfSpeech");
+        // progressBar.setIndeterminate(false);
+        // progressBar.setMax(10);
+    }
+
+    @Override
+    public void onBufferReceived(byte[] buffer) {
+        //Log.i(LOG_TAG, "onBufferReceived: " + buffer);
+    }
+
+    @Override
+    public void onEndOfSpeech() {
+        //Log.i(LOG_TAG, "onEndOfSpeech");
+        //progressBar.setIndeterminate(true);
+        //toggleButton.setChecked(false);
+    }
+
+    @Override
+    public void onError(int errorCode) {
+        String errorMessage = getErrorText(errorCode);
+        //Log.d(LOG_TAG, "FAILED " + errorMessage);
+         //returnedText.setText(errorMessage);
+        showChangeLangDialog("Please try again !", errorMessage);
+        // toggleButton.setChecked(false);
+    }
+
+    @Override
+    public void onEvent(int arg0, Bundle arg1) {
+        //Log.i(LOG_TAG, "onEvent");
+    }
+
+    @Override
+    public void onPartialResults(Bundle arg0) {
+        //Log.i(LOG_TAG, "onPartialResults");
+    }
+
+    @Override
+    public void onReadyForSpeech(Bundle arg0) {
+        //Log.i(LOG_TAG, "onReadyForSpeech");
+    }
+
+    @Override
+    public void onResults(Bundle results) {
+        //Log.i(LOG_TAG, "onResults");
+        ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+        for (String text : matches) {
+            if (text.matches("(?i).*bo.*")) {
+                //tvSpeechInput.setText("Not Out");
+                shout = "2";
+                shoutToServer();
+                return;
+            } else if (text.matches("(?i).*out.*")) {
+                //tvSpeechInput.setText("Out");
+                shout = "1";
+                shoutToServer();
+                return;
+            }
+
+        }
+
+        if(shout == null)
+        {
+            showChangeLangDialog("Please try again !", "Shout Out/Booo !");
+        }
+    }
+
+    @Override
+    public void onRmsChanged(float rmsdB) {
+        // Log.i(LOG_TAG, "onRmsChanged: " + rmsdB);
+        //progressBar.setProgress((int) rmsdB);
+    }
+
+    public static String getErrorText(int errorCode) {
+        String message;
+        switch (errorCode) {
+            case SpeechRecognizer.ERROR_AUDIO:
+                message = "Audio recording error";
+                break;
+            case SpeechRecognizer.ERROR_CLIENT:
+                message = "Client side error";
+                break;
+            case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
+                message = "Insufficient permissions";
+                break;
+            case SpeechRecognizer.ERROR_NETWORK:
+                message = "Network error";
+                break;
+            case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+                message = "Network timeout";
+                break;
+            case SpeechRecognizer.ERROR_NO_MATCH:
+                message = "No match";
+                break;
+            case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
+                message = "RecognitionService busy";
+                break;
+            case SpeechRecognizer.ERROR_SERVER:
+                message = "error from server";
+                break;
+            case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
+                message = "No speech input";
+                break;
+            default:
+                message = "Didn't understand, please try again.";
+                break;
+        }
+        return message;
+    }
 }
