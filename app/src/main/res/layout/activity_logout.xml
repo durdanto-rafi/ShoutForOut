@@ -133,10 +133,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="-50dp"
+                        android:layout_marginLeft="-30dp"
                         android:layout_weight=".35"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/flag_big_2" />
+                        android:scaleType="fitCenter" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -229,10 +228,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="-50dp"
+                        android:layout_marginLeft="-30dp"
                         android:layout_weight=".35"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/flag_big_1" />
+                        android:scaleType="fitCenter" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -316,10 +314,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="-50dp"
+                        android:layout_marginLeft="-30dp"
                         android:layout_weight=".35"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/flag_big_2" />
+                        android:scaleType="fitCenter" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -383,10 +380,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="-50dp"
+                        android:layout_marginLeft="-30dp"
                         android:layout_weight=".35"
-                        android:scaleType="fitCenter"
-                        android:src="@mipmap/flag_big_1" />
+                        android:scaleType="fitCenter" />
                 </LinearLayout>
             </LinearLayout>
 

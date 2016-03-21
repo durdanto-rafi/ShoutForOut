@@ -103,6 +103,8 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
         mImageLoader = mVolleySingleton.getImageLoader();
 
         // fetching facebook's profile picture
+
+        // Geeting speech from Recording dialog
         if (isConnected()) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
@@ -129,18 +131,20 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
                 }
             }.execute();
 
-            /*if (isConnected()) {
+            if (isConnected()) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 20000000);
                 startActivityForResult(intent, REQUEST_CODE);
                 //tvSpeechInput.setText("");
             } else {
-                Toast.makeText(getApplicationContext(), "Plese Connect to Internet", Toast.LENGTH_LONG).show();
-            }*/
+                L.t(this,"Plese Connect to Internet");
+            }
         }
 
-        speech = SpeechRecognizer.createSpeechRecognizer(this);
+
+        // Geeting speech from Recording background
+        /*speech = SpeechRecognizer.createSpeechRecognizer(this);
         speech.setRecognitionListener(this);
         recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "en");
@@ -148,7 +152,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
 
-        speech.startListening(recognizerIntent);
+        speech.startListening(recognizerIntent);*/
 
 
         /*btnLogout = (TextView) findViewById(R.id.btnLogout);
