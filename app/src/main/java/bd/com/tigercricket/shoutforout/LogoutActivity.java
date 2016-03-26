@@ -8,6 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -20,6 +24,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,10 +46,12 @@ import java.util.Map;
 
 import bd.com.tigercricket.callbacks.MatchLoadedListener;
 import bd.com.tigercricket.extras.Constants;
+import bd.com.tigercricket.extras.MyApplication;
 import bd.com.tigercricket.logging.L;
 import bd.com.tigercricket.network.VolleySingleton;
 import bd.com.tigercricket.pojo.Match;
 import bd.com.tigercricket.pojo.User;
+import bd.com.tigercricket.sensor.ShakeEventManager;
 import bd.com.tigercricket.task.TaskLoadMatch;
 
 import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_EMAIL;
@@ -54,7 +61,7 @@ import static bd.com.tigercricket.extras.Keys.EndpointMatch.KEY_SHOUT;
 import static bd.com.tigercricket.extras.UrlEndpoints.URL_SHOUT;
 
 
-public class LogoutActivity extends Activity implements MatchLoadedListener, RecognitionListener {
+public class LogoutActivity extends Activity implements MatchLoadedListener, RecognitionListener, ShakeEventManager.ShakeListener {
 
     private TextView btnLogout, tvTotalNotOut, tvTotalOut;
     private User user;
@@ -71,17 +78,108 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
     String shout;
     Match match;
     String message;
+    boolean isRecordingDialogOpen = false;
 
+    private ShakeEventManager sd;
 
     private TextView returnedText;
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     private String LOG_TAG = "VoiceRecognitionActivity";
 
+    private SensorManager mSensorManager;
+    private float mAccel; // acceleration apart from gravity
+    private float mAccelCurrent; // current acceleration including gravity
+    private float mAccelLast; // last acceleration including gravity
+
+    private final SensorEventListener mSensorListener = new SensorEventListener() {
+
+        public void onSensorChanged(SensorEvent se) {
+            float x = se.values[0];
+            float y = se.values[1];
+            float z = se.values[2];
+            mAccelLast = mAccelCurrent;
+            mAccelCurrent = (float) Math.sqrt((double) (x * x + y * y + z * z));
+            float delta = mAccelCurrent - mAccelLast;
+            mAccel = mAccel * 0.9f + delta; // perform low-cut filter
+
+            if (mAccel > 12) {
+                Toast toast = Toast.makeText(getApplicationContext(), "Device has shaken.", Toast.LENGTH_LONG);
+                toast.show();
+
+                /*if (isConnected()) {
+                    Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    //intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 20000000);
+                    startActivityForResult(intent, REQUEST_CODE);
+                    //tvSpeechInput.setText("");
+                } else {
+                    L.t(MyApplication.getAppContext(),"Plese Connect to Internet");
+                }*/
+            }
+
+
+        }
+
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    protected void onPause() {
+        mSensorManager.unregisterListener(mSensorListener);
+        super.onPause();
+
+        if (speech != null) {
+            speech.destroy();
+            //Log.i(LOG_TAG, "destroy");
+        }
+    }*/
+
+    @Override
+    public void onShake() {
+        if (isConnected() && isRecordingDialogOpen == false) {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            //intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 20000000);
+            startActivityForResult(intent, REQUEST_CODE);
+            isRecordingDialogOpen = true;
+            //tvSpeechInput.setText("");
+        } else {
+            L.t(MyApplication.getAppContext(), "Plese Connect to Internet");
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sd.register();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sd.deregister();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
+
+        sd = new ShakeEventManager();
+        sd.setListener(this);
+        sd.init(this);
+
         user = PrefUtils.getCurrentUser(LogoutActivity.this);
         //profileImage = (ImageView) findViewById(R.id.profileImage);
         ivTeam1 = (ImageView) findViewById(R.id.ivTeam1);
@@ -131,7 +229,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
                 }
             }.execute();
 
-            if (isConnected()) {
+            /*if (isConnected()) {
                 Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
                 intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
                 intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 20000000);
@@ -139,7 +237,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
                 //tvSpeechInput.setText("");
             } else {
                 L.t(this,"Plese Connect to Internet");
-            }
+            }*/
         }
 
 
@@ -199,6 +297,12 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
         });*/
         new TaskLoadMatch(this).execute();
 
+
+        /*mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        mAccel = 0.00f;
+        mAccelCurrent = SensorManager.GRAVITY_EARTH;
+        mAccelLast = SensorManager.GRAVITY_EARTH;*/
     }
 
     public boolean isConnected() {
@@ -215,6 +319,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            isRecordingDialogOpen = false;
             matches_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
             for (String text : matches_text) {
@@ -231,6 +336,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
                 }
             }
         }
+        isRecordingDialogOpen = false;
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -339,20 +445,6 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
         b.show();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (speech != null) {
-            speech.destroy();
-            //Log.i(LOG_TAG, "destroy");
-        }
-
-    }
 
     @Override
     public void onBeginningOfSpeech() {
@@ -377,7 +469,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
     public void onError(int errorCode) {
         String errorMessage = getErrorText(errorCode);
         //Log.d(LOG_TAG, "FAILED " + errorMessage);
-         //returnedText.setText(errorMessage);
+        //returnedText.setText(errorMessage);
         showChangeLangDialog("Please try again !", errorMessage);
         // toggleButton.setChecked(false);
     }
@@ -416,8 +508,7 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
 
         }
 
-        if(shout == null)
-        {
+        if (shout == null) {
             showChangeLangDialog("Please try again !", "Shout Out/Booo !");
         }
     }
@@ -464,4 +555,5 @@ public class LogoutActivity extends Activity implements MatchLoadedListener, Rec
         }
         return message;
     }
+
 }
